@@ -1,0 +1,63 @@
+{
+  "name": "vue-uniroll-playground",
+  "version": "0.0.0",
+  "author": {
+    "name": "kazuya kawaguchi",
+    "email": "kawakazu80@gmail.com"
+  },
+  "dependencies": {
+    "monaco-editor": "^0.21.2",
+    "rollup-plugin-vue": "5.1.9",
+    "uniroll": "^2.4.1",
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.2.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "buffer": "^5.6.0",
+    "comlink-loader": "^2.0.0",
+    "css-loader": "^4.3.0",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-vue": "^7.0.0-beta.4",
+    "eslint-plugin-vue-libs": "^4.0.0",
+    "file-loader": "^6.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "monaco-editor-webpack-plugin": "^2.0.0",
+    "npm-run-all": "^4.1.5",
+    "path-browserify": "^1.0.1",
+    "prettier": "^2.1.2",
+    "process": "^0.11.10",
+    "rollup": "^2.28.0",
+    "stream-browserify": "^3.0.0",
+    "style-loader": "^1.2.1",
+    "ts-loader": "^7.0.5",
+    "typescript": "^4.0.3",
+    "typescript-eslint-language-service": "^4.0.1",
+    "url-loader": "^4.1.0",
+    "util": "^0.12.3",
+    "vue-loader": "^16.0.0-beta.8",
+    "webpack": "^5.0.0-rc.4",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "worker-plugin": "^5.0.0"
+  },
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kazupon/vue-uniroll-playground.git"
+  },
+  "scripts": {
+    "build": "webpack",
+    "clean": "rm -rf ./dist",
+    "dev": "webpack-dev-server",
+    "fix": "npm-run-all --parallel lint:fix format:fix",
+    "format": "prettier --config .prettierrc --ignore-path .prettierignore '**/*.{js,json,html}'",
+    "format:fix": "yarn format --write",
+    "lint": "eslint ./src --ext .js,.ts",
+    "lint:fix": "yarn lint --fix"
+  }
+}
