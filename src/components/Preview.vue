@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, ref, watch, watchEffect } from 'vue'
+import { defineComponent, ref, watchEffect } from 'vue'
 import { template, errorTemplate, AppVue } from './templates'
 import { compile } from '../workers/builder.worker'
 
@@ -7,7 +7,10 @@ export default defineComponent({
   name: 'Preview',
 
   props: {
-    code: String
+    code: {
+      type: String,
+      default: () => ''
+    }
   },
 
   setup(props) {
@@ -19,10 +22,13 @@ export default defineComponent({
         console.log('start build')
         try {
           building.value = true
-          const output = await compile({
-            '/App.vue': AppVue,
-            '/index.ts': props.code
-          }, '/index.ts')
+          const output = await compile(
+            {
+              '/App.vue': AppVue,
+              '/index.ts': props.code
+            },
+            '/index.ts'
+          )
           const encoded = btoa(output)
           const blob = new Blob([template(encoded)], { type: 'text/html' })
           preview.value.src = URL.createObjectURL(blob)
@@ -38,20 +44,32 @@ export default defineComponent({
       }
     }
 
-    watchEffect(async () => { await build() })
+    watchEffect(async () => {
+      await build()
+    })
 
     return {
       building,
       preview
     }
-  } 
+  }
 })
 </script>
 
 <template>
   <div>
-    <div v-if="building" class="building">... building</div>
-    <iframe class="preview" ref="preview" />
+    <!-- prettier-ignore -->
+    <h2
+      v-if="building"
+      class="building"
+    >
+      ... building
+    </h2>
+    <!-- prettier-ignore -->
+    <iframe
+      ref="preview"
+      class="preview"
+    />
   </div>
 </template>
 
@@ -63,6 +81,7 @@ export default defineComponent({
 .building {
   width: 100%;
   height: 100%;
+  font-size: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;

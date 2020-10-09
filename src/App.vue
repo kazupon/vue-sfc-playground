@@ -3,7 +3,7 @@ import { defineComponent } from 'vue'
 import Navigation from './components/Navigation.vue'
 import Editor from './components/Editor.vue'
 import Preview from './components/Preview.vue'
-import { initialCodes, entryVue } from './components/templates'
+import { initialCodes } from './components/templates'
 import { useDebouncedRef } from './utils'
 
 export default defineComponent({
@@ -29,8 +29,16 @@ export default defineComponent({
       <Navigation class="navigation" />
     </div>
     <div class="operation">
-      <Editor class="editor" v-model:code="code" />
-      <Preview class="preview" :code="code" />
+      <!-- prettier-ignore -->
+      <Editor
+        v-model:code="code"
+        class="editor"
+      />
+      <!-- prettier-ignore -->
+      <Preview
+        class="preview"
+        :code="code"
+      />
     </div>
   </div>
 </template>

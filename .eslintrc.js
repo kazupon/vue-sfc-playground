@@ -39,6 +39,7 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off',
     'vue/one-component-per-file': 'off',
     'vue/experimental-script-setup-vars': 'off',
-    'vue/no-deprecated-props-default-this': 'off'
+    'vue/no-deprecated-props-default-this': 'off',
+    'vue/no-v-model-argument': 'off' // plugin:vue/vue3-recommended bug?
   }
 }

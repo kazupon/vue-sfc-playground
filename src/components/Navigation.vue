@@ -1,11 +1,11 @@
 <template>
   <div class="navigation-root">
-    <h2>Vue Uniroll Playground</h2>
+    <h1>Vue Uniroll Playground</h1>
   </div>
 </template>
 
 <style scoped>
-h2 {
+h1 {
   margin: 0;
   padding: 0.4rem 0 0.4rem 2rem;
 }

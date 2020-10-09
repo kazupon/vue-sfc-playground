@@ -1,20 +1,30 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
 import theme from './theme'
+import { initialCodes } from './templates'
 import * as monaco from 'monaco-editor'
 
 export default defineComponent({
   name: 'Editor',
-  
+
   props: {
-    code: String
+    code: {
+      type: String,
+      default: () => initialCodes
+    }
+  },
+
+  emits: {
+    'update:code': null
   },
 
   setup(props, { emit }) {
     const container = ref<HTMLElement | null>(null)
 
     onMounted(() => {
-      if (container.value == null) { return }
+      if (container.value == null) {
+        return
+      }
 
       monaco.editor.defineTheme('my-theme', theme)
       monaco.editor.setTheme('my-theme')
@@ -29,11 +39,13 @@ export default defineComponent({
         tabSize: 2,
         minimap: {
           enabled: false
-        } 
+        }
       })
       window.addEventListener('resize', () => editor.layout())
 
-      editor.onDidChangeModelContent(() => emit('update:code', editor.getValue()))
+      editor.onDidChangeModelContent(() =>
+        emit('update:code', editor.getValue())
+      )
     })
 
     return { container }
@@ -42,5 +54,5 @@ export default defineComponent({
 </script>
 
 <template>
-  <div ref="container"></div>
+  <div ref="container" />
 </template>
