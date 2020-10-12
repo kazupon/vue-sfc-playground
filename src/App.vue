@@ -3,7 +3,7 @@ import { defineComponent } from 'vue'
 import Navigation from './components/Navigation.vue'
 import Editor from './components/Editor.vue'
 import Preview from './components/Preview.vue'
-import { initialCodes } from './components/templates'
+import { initialCodes } from './templates'
 import { useDebouncedRef } from './utils'
 
 export default defineComponent({

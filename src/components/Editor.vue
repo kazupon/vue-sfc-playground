@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
-import theme from './theme'
-import { initialCodes } from './templates'
+import theme from '../theme'
+import { initialCodes } from '../templates'
 import * as monaco from 'monaco-editor'
 
 export default defineComponent({

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref, watchEffect } from 'vue'
-import { template, errorTemplate, AppVue } from './templates'
+import { template, errorTemplate, AppVue } from '../templates'
 import { compile } from '../workers/builder.worker'
 
 export default defineComponent({
