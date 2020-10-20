@@ -1,6 +1,6 @@
 <template>
   <div class="navigation-root">
-    <h1>Vue Uniroll Playground</h1>
+    <h1>Vue SFC Playground</h1>
   </div>
 </template>
 

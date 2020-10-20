@@ -37,15 +37,33 @@ const app = new Vue({
 app.$mount('#app')
 `
 
-export const AppVue = `
-<template>
-  <p>{{ msg }}</p>
-</template>
+export const entryVue3 = `
+import { createApp } from 'vue'
+import App from './App.vue'
+const app = createApp(App)
+app.mount('#app')
+`
 
+export const AppVue = `
 <script>
 export default {
   name: 'App',
-  props: ['msg']
+  props: {
+    msg: {
+      type: String,
+      default: () => 'hello, vue-uniroll-playground!'
+    }
+  }
 }
 </script>
+
+<template>
+  <h1>{{ msg }}</h1>
+</template>
+
+<style scoped>
+h1 {
+  color: blue;
+}
+</style>
 `

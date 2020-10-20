@@ -1,8 +1,8 @@
-# :lollipop: vue-uniroll-playground
+# :lollipop: vue-sfc-playground
 
 > :warning: WIP, This repo is experimental !
 
-SFC building on the browser with [uniroll](https://github.com/mizchi/uniroll)
+SFC on deman building on the browser with [uniroll](https://github.com/mizchi/uniroll)
 
 Demo: https://gallant-archimedes-7cf916.netlify.app/
 

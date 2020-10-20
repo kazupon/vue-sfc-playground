@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref, watchEffect } from 'vue'
-import { template, errorTemplate, AppVue } from '../templates'
+import { template, errorTemplate, entryVue3 } from '../templates'
 import { compile } from '../workers/builder.worker'
 
 export default defineComponent({
@@ -24,8 +24,11 @@ export default defineComponent({
           building.value = true
           const output = await compile(
             {
-              '/App.vue': AppVue,
-              '/index.ts': props.code
+              '/App.vue': props.code,
+              '/index.ts': entryVue3
+            },
+            {
+              vue: 'https://unpkg.com/vue@3.0.0/dist/vue.esm-browser.prod.js'
             },
             '/index.ts'
           )
