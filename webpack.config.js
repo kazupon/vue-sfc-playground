@@ -6,12 +6,12 @@ const MonacoEditorPlugin = require('monaco-editor-webpack-plugin')
 const WorkerPlugin = require('worker-plugin')
 
 module.exports = {
-  // cache: {
-  //   type: 'filesystem',
-  //   buildDependencies: {
-  //     config: [__filename]
-  //   }
-  // },
+  cache: {
+    type: 'filesystem',
+    buildDependencies: {
+      config: [__filename]
+    }
+  },
   // mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   // devtool:
   //   process.env.NODE_ENV === 'production'
@@ -27,18 +27,6 @@ module.exports = {
     alias: {
       vue: require.resolve('vue/dist/vue.esm-bundler.js'),
       'uniroll-vue': require.resolve('uniroll-vue/dist/uniroll-vue.js')
-      // consolidate: false,
-      // crypto: 'crypto-browserify',
-      // os: false,
-      // http: false,
-      // https: false,
-      // process: 'process/browser.js',
-      // buffer: 'buffer',
-      // path: 'path-browserify',
-      // stream: 'stream-browserify',
-      // util: 'util/util.js',
-      // assert: false,
-      // fs: false
     }
   },
   module: {
@@ -98,11 +86,6 @@ module.exports = {
     ]
   },
   plugins: [
-    // new webpack.IgnorePlugin(/fsevents/),
-    // new webpack.ProvidePlugin({
-    //   process: 'process/browser.js',
-    //   Buffer: ['buffer', 'Buffer']
-    // }),
     new VueLoaderPlugin(),
     new MonacoEditorPlugin(),
     new HtmlWebpackPlugin({
@@ -115,7 +98,7 @@ module.exports = {
   devServer: {
     inline: true,
     hot: true,
-    stats: 'verbose',
+    // stats: 'verbose',
     contentBase: __dirname,
     overlay: true
   }

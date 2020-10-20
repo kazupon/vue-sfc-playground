@@ -2,6 +2,7 @@
 import { defineComponent, ref, onMounted } from 'vue'
 import theme from '../theme'
 import { initialCodes } from '../templates'
+import { debounce } from '../utils'
 import * as monaco from 'monaco-editor'
 
 export default defineComponent({
@@ -15,7 +16,7 @@ export default defineComponent({
   },
 
   emits: {
-    'update:code': null
+    change: null
   },
 
   setup(props, { emit }) {
@@ -32,7 +33,7 @@ export default defineComponent({
       const editor = monaco.editor.create(container.value, {
         value: [props.code].join('\n'),
         wordWrap: 'bounded',
-        language: 'javascript',
+        language: 'html',
         fontSize: 14,
         scrollBeyondLastLine: false,
         renderWhitespace: 'selection',
@@ -43,8 +44,8 @@ export default defineComponent({
       })
       window.addEventListener('resize', () => editor.layout())
 
-      editor.onDidChangeModelContent(() =>
-        emit('update:code', editor.getValue())
+      editor.onDidChangeModelContent(
+        debounce(() => emit('change', editor.getValue()))
       )
     })
 

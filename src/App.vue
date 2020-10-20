@@ -1,10 +1,9 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import Navigation from './components/Navigation.vue'
 import Editor from './components/Editor.vue'
 import Preview from './components/Preview.vue'
 import { AppVue } from './templates'
-import { useDebouncedRef } from './utils'
 
 export default defineComponent({
   name: 'App',
@@ -16,8 +15,29 @@ export default defineComponent({
   },
 
   setup() {
+    const liveEditing = ref(false)
+    const code = ref(AppVue)
+    let prevCode = AppVue
+
+    const onLive = (checked: boolean) => {
+      liveEditing.value = checked
+    }
+
+    const onRun = () => (code.value = prevCode)
+
+    const onChangeEditor = (newCode: string) => {
+      console.log('onChangeEditor', newCode)
+      if (liveEditing.value) {
+        code.value = newCode
+      }
+      prevCode = newCode
+    }
+
     return {
-      code: useDebouncedRef(AppVue, 100)
+      onLive,
+      onRun,
+      onChangeEditor,
+      code
     }
   }
 })
@@ -25,14 +45,20 @@ export default defineComponent({
 
 <template>
   <div class="container">
-    <div class="navigation">
-      <Navigation class="navigation" />
-    </div>
+    <nav class="navigation">
+      <!-- prettier-ignore -->
+      <Navigation
+        class="navigation"
+        @live="onLive"
+        @run="onRun"
+      />
+    </nav>
     <div class="operation">
       <!-- prettier-ignore -->
       <Editor
-        v-model:code="code"
+        :code="code"
         class="editor"
+        @change="onChangeEditor"
       />
       <!-- prettier-ignore -->
       <Preview
@@ -54,6 +80,7 @@ export default defineComponent({
   box-sizing: border-box;
   background-color: var(--bg);
   border-bottom: 1px solid var(--border);
+  display: flex;
 }
 .operation {
   width: 100%;

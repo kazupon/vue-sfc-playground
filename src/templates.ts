@@ -44,8 +44,7 @@ const app = createApp(App)
 app.mount('#app')
 `
 
-export const AppVue = `
-<script>
+export const AppVue = `<script>
 export default {
   name: 'App',
   props: {
