@@ -7,11 +7,12 @@ SFC on deman building on the browser with [uniroll](https://github.com/mizchi/un
 Demo: https://gallant-archimedes-7cf916.netlify.app/
 
 ## :white_check_mark: TODOs
-- [ ] Integration rollup-plugin-vue to uniroll
+- [x] Integration rollup-plugin-vue to uniroll
 - [ ] Display build errors
 - [ ] Dispaly build progress
 - [ ] Display ES Modules and local modules resolve errors
 
+ref: see the `uniroll-vue` [TODOs](https://github.com/mizchi/uniroll/tree/master/packages/uniroll-vue)
 
 ## :copyright: License
 
