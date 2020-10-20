@@ -16,7 +16,8 @@ export default defineComponent({
 
   setup() {
     const liveEditing = ref(false)
-    const code = ref(AppVue)
+    const initialCode = ref(AppVue)
+    const code = ref('')
     let prevCode = AppVue
 
     const onLive = (checked: boolean) => {
@@ -37,6 +38,7 @@ export default defineComponent({
       onLive,
       onRun,
       onChangeEditor,
+      initialCode,
       code
     }
   }
@@ -56,7 +58,7 @@ export default defineComponent({
     <div class="operation">
       <!-- prettier-ignore -->
       <Editor
-        :code="code"
+        :code="initialCode"
         class="editor"
         @change="onChangeEditor"
       />

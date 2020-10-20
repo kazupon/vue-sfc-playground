@@ -19,6 +19,6 @@ export async function compile(
   const out = await rolled.generate({
     format: 'es'
   })
-  console.log('[builder.worker] output', out.output[0].code)
+  // console.log('[builder.worker] output', out.output[0].code)
   return out.output[0].code
 }
