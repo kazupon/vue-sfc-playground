@@ -6,12 +6,12 @@ const MonacoEditorPlugin = require('monaco-editor-webpack-plugin')
 const WorkerPlugin = require('worker-plugin')
 
 module.exports = {
-  cache: {
-    type: 'filesystem',
-    buildDependencies: {
-      config: [__filename]
-    }
-  },
+  // cache: {
+  //   type: 'filesystem',
+  //   buildDependencies: {
+  //     config: [__filename]
+  //   }
+  // },
   // mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   // devtool:
   //   process.env.NODE_ENV === 'production'
