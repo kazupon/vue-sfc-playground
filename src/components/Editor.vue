@@ -27,8 +27,8 @@ export default defineComponent({
         return
       }
 
-      monaco.editor.defineTheme('my-theme', theme)
-      monaco.editor.setTheme('my-theme')
+      monaco.editor.defineTheme('theme', theme)
+      monaco.editor.setTheme('theme')
 
       const editor = monaco.editor.create(container.value, {
         value: [props.code].join('\n'),

@@ -12,7 +12,7 @@ export async function compile(
     importmaps: {
       imports
     },
-    onwarn(warnings) {
+    onwarn(warnings: string[]) {
       console.warn('[uniroll-warn]', warnings)
     }
   })

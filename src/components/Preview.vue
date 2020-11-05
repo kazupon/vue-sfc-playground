@@ -22,7 +22,7 @@ export default defineComponent({
         console.log('start build')
         try {
           building.value = true
-          const output = await compile(
+          const code = await compile(
             {
               '/App.vue': props.code,
               '/index.ts': entryVue3
@@ -32,7 +32,11 @@ export default defineComponent({
             },
             '/index.ts'
           )
-          const encoded = btoa(output)
+          console.info(
+            'built size',
+            Math.floor(Array.from(code).length / 1024) + ' kb'
+          )
+          const encoded = btoa(unescape(encodeURIComponent(code)))
           const blob = new Blob([template(encoded)], { type: 'text/html' })
           preview.value.src = URL.createObjectURL(blob)
         } catch (e) {
